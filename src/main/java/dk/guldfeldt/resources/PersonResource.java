@@ -1,4 +1,4 @@
-package dk.guldfeldt.controller;
+package dk.guldfeldt.resources;
 
 import dk.guldfeldt.api.Person;
 import io.quarkus.hibernate.orm.panache.Panache;

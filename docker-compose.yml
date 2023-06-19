@@ -1,0 +1,12 @@
+version: '3'
+services:
+
+  db:
+    image: thorsager/quick-mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_USER=devel
+      - MYSQL_PASSWORD=devel
+      - MYSQL_DATABASES=cardiped_dev
