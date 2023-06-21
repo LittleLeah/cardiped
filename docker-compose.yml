@@ -9,4 +9,4 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_USER=devel
       - MYSQL_PASSWORD=devel
-      - MYSQL_DATABASES=cardiped_dev
+      - MYSQL_DATABASES=cardiped_dev,cardiped

@@ -1,30 +1,58 @@
 package dk.guldfeldt.api;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import io.quarkus.hibernate.reactive.panache.PanacheEntity;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Cacheable
 public class Dog extends PanacheEntity {
-    @Column
-    public String id;
 
     @Column
-    public String owner;
+    public Long id;
+
+    @Column
+    public String registrationNumber;
+    @ManyToMany(mappedBy = "dogs")
+    public List<Person> owners;
 
     @Column
     public String name;
 
-    public Dog() {
+    @OneToOne
+    @MapsId
+    public Dog sire;
+    @OneToOne
+    @MapsId
+    public Dog dam;
 
-    }
+    @Column
+    public Long height;
 
-    public Dog(String id, String owner, String name) {
-        this.id = id;
-        this.owner = owner;
-        this.name = name;
-    }
+    @Column
+    public Long weight;
+
+    @Column
+    public String color;
+
+    @Column
+    public String notes;
+
+    @OneToOne
+    @MapsId
+    public Kennel bredBy;
+
+    @OneToOne
+    @MapsId
+    public Kennel standingAt;
+
+    @ManyToMany
+    @JoinTable(name = "Title")
+    public List<Title> titles;
+
+    @OneToOne
+    @MapsId
+    public HealthInfo healthInfo;
 
 }
