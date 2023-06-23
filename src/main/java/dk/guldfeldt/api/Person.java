@@ -10,6 +10,7 @@ import java.util.List;
 public class Person extends PanacheEntity {
 
     @Column
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Person_SEQ")
     public Long id;
     @Column
     public String name;
@@ -28,12 +29,14 @@ public class Person extends PanacheEntity {
     @Column
     public String country;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "kennel_id", referencedColumnName = "id")
     public Kennel kennel;
 
-    @ManyToMany
-    @JoinTable(name = "Dog")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "OwnerDogs",
+            joinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "dog_id", referencedColumnName = "id"))
     public List<Dog> dogs;
 
 }

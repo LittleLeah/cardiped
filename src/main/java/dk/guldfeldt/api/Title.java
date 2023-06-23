@@ -14,5 +14,8 @@ public class Title extends PanacheEntity {
     public Long id;
 
     @Column
+    public String shortName;
+
+    @Column
     public String title;
 }

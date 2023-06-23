@@ -12,7 +12,7 @@ public class Kennel extends PanacheEntity {
     @Column
     public Long id;
 
-    @OneToMany(mappedBy = "kennel")
+    @OneToMany(mappedBy = "kennel", fetch = FetchType.EAGER)
     public List<Person> owners;
 
     @Column
